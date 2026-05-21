@@ -1,0 +1,37 @@
+# Python cache and build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+ENV/
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Generated data and caches
+data/raw/
+data/interim/
+data/processed/*.jsonl
+data/processed/*.parquet
+data/processed/*.npy
+
+# Generated figures
+reports/figures/
+
+# VS Code workspace files
+.vscode/
+
+# macOS and Windows temp files
+.DS_Store
+Thumbs.db
+
+# pytest
+.pytest_cache/
+
+# Log and temporary files
+*.log
+*.tmp
+*.temp

@@ -1,0 +1,281 @@
+{
+  "schema_version": "1.1",
+  "metadata_fields": [
+    "subreddit_origem",
+    "window",
+    "thread_id",
+    "author",
+    "created_utc",
+    "score",
+    "num_comments",
+    "is_link_post"
+  ],
+  "_metadata_note": "subreddit_origem is stored as metadata for H1 post-hoc testing ONLY. It is FORBIDDEN as a clustering feature in any of the three methods. Feeding origin into clustering would make H1 circular.",
+  "fields": [
+    {
+      "name": "sofisticacao_tecnica",
+      "tipo": "ordinal",
+      "descricao": "Grau de domínio de conceitos, instrumentos e mecânicas do mercado financeiro, inferido pelo vocabulário, perguntas e raciocínio demonstrados",
+      "valores": {
+        "escala": "1-5",
+        "ancoras": {
+          "1": "Desconhece terminologia básica, confunde categorias de produtos, faz perguntas sobre mecânica elementar (ex: 'onde aparece o dividendo?', 'o que é D+1?')",
+          "2": "Conhece produtos comuns (Tesouro, CDB, poupança, ações) mas tem lacunas em mecânica (marcação a mercado, compensação de IR, desdobramento)",
+          "3": "Opera com conceitos intermediários (FIIs, ETFs, análise fundamentalista básica, CDI vs IPCA+, isenção de 20k), comete erros pontuais",
+          "4": "Domina instrumentos complexos (opções, derivativos, duration, ETTJ, tributação regressiva, planejamento sucessório), raciocínio consistente",
+          "5": "Nível institucional ou quase: modela portfólios com múltiplas variáveis, domina arbitragem, planejamento tributário cross-border, APIs e automação"
+        }
+      },
+      "permite_desconhecido": false,
+      "justificativa": "Dimensão mais frequente nas 300 notas — aparece em praticamente todas as entradas como eixo central de diferenciação. Varia de 'não sabe fazer TED para corretora' até 'constrói modelos de machine learning para títulos públicos'. É o preditor mais forte de cluster."
+    },
+    {
+      "name": "fase_acumulacao",
+      "tipo": "categorical",
+      "descricao": "Estágio atual do investidor na jornada de construção patrimonial, considerando capital disponível e horizonte declarado ou inferido",
+      "valores": [
+        "pre_inicio",
+        "acumulacao_inicial",
+        "acumulacao_ativa",
+        "consolidacao",
+        "distribuicao_renda_passiva",
+        "preservacao_patrimonial"
+      ],
+      "permite_desconhecido": true,
+      "justificativa": "Recorre em ~120 notas. 'pre_inicio' = sem capital ou capital simbólico (R$50–R$550), ainda sem estrutura básica. 'acumulacao_inicial' = reserva de emergência em formação, primeiros aportes. 'acumulacao_ativa' = aportes regulares, portfólio em crescimento. 'consolidacao' = patrimônio relevante, otimizando alocação. 'distribuicao_renda_passiva' = objetivo de viver de dividendos/juros. 'preservacao_patrimonial' = patrimônio alto (ex: 7M em imóvel, 63 anos de despesas), foco em não perder."
+    },
+    {
+      "name": "estrategia_principal",
+      "tipo": "categorical",
+      "descricao": "Abordagem de investimento dominante que o investidor adota ou aspira adotar, capturando orientação de pessoa, não tópico de postagem",
+      "valores": [
+        "renda_fixa_conservadora",
+        "dividendos_buy_hold",
+        "growth_valorizacao",
+        "especulacao_curto_prazo",
+        "investimento_exterior",
+        "imobiliario_direto_ou_fii",
+        "sem_estrategia_definida"
+      ],
+      "permite_desconhecido": true,
+      "justificativa": "Aparece em ~150 notas. Distinção crítica: 'renda_fixa_conservadora' inclui quem vive de Selic/CDI e rejeita renda variável; 'dividendos_buy_hold' é o perfil mais comum no r/investimentos (BEST, FIIs, ações pagadoras); 'especulacao_curto_prazo' inclui day trade, opções, criptos especulativas; 'investimento_exterior' é perfil crescente com ETFs irlandeses, Avenue, BDRs. Captura orientação de pessoa, não produto específico."
+    },
+    {
+      "name": "tolerancia_risco_declarada_ou_inferida",
+      "tipo": "ordinal",
+      "descricao": "Disposição a aceitar volatilidade e possibilidade de perda em troca de maior retorno potencial, combinando declarações explícitas e comportamentos observados",
+      "valores": {
+        "escala": "1-5",
+        "ancoras": {
+          "1": "Evita qualquer volatilidade; prefere poupança ou Tesouro Selic mesmo com retorno inferior; ansiedade explícita com qualquer oscilação negativa",
+          "2": "Aceita renda fixa de prazo mais longo (IPCA+, prefixado) mas evita renda variável; preocupação com marcação a mercado",
+          "3": "Portfólio misto com renda variável moderada (ações blue chips, FIIs); aceita oscilações mas questiona quedas maiores",
+          "4": "Concentração relevante em renda variável, aceita volatilidade como parte do processo; pode operar opções ou small caps",
+          "5": "Concentração em ativos especulativos (shitcoins, day trade alavancado, all-in em ação única); trata perdas com humor ou resignação"
+        }
+      },
+      "permite_desconhecido": false,
+      "justificativa": "Presente em ~180 notas. Diferencia claramente o investidor que tem ansiedade com marcação a mercado do Tesouro IPCA+ do que perdeu 94% do patrimônio e continua operando. Importante: capturar comportamento observado quando diverge do declarado (ex: diz conservador mas opera opções)."
+    },
+    {
+      "name": "relacao_com_selic_e_renda_fixa",
+      "tipo": "categorical",
+      "descricao": "Como o investidor posiciona a renda fixa brasileira (especialmente produtos atrelados à Selic/CDI) em sua estratégia — captura atitude, não apenas conhecimento",
+      "valores": [
+        "ancora_principal",
+        "reserva_e_transicao",
+        "obstaculo_a_superar",
+        "indiferente_ou_desconhece",
+        "otimizador_ativo"
+      ],
+      "permite_desconhecido": true,
+      "justificativa": "Específico ao contexto brasileiro — aparece em ~90 notas. 'ancora_principal' = investe quase tudo em RF, satisfeito com Selic alta. 'reserva_e_transicao' = usa RF para reserva de emergência e caixa enquanto estuda RV. 'obstaculo_a_superar' = vê Selic alta como desculpa para não aprender RV, quer ir além. 'otimizador_ativo' = compara LCI/LCA/CDB/Tesouro ativamente, busca spread. Dimensão ausente em esquemas genéricos mas crítica para segmentação brasileira."
+    },
+    {
+      "name": "perfil_tributario_e_fiscal",
+      "tipo": "categorical",
+      "descricao": "Grau de engajamento e sofisticação do investidor com obrigações e otimizações fiscais no contexto brasileiro",
+      "valores": [
+        "desconhece_ou_ignora",
+        "conformidade_basica",
+        "otimizador_fiscal",
+        "cross_border_ou_pj",
+        "evasao_ou_zona_cinzenta"
+      ],
+      "permite_desconhecido": true,
+      "justificativa": "Presente em ~80 notas. Específico ao Brasil: isenção de 20k em ações, compensação de prejuízos, DARF, carnê-leão, PGBL vs VGBL, ITCMD, saída definitiva, W-8BEN, tributação regressiva de RF. 'cross_border_ou_pj' captura quem recebe em moeda estrangeira ou opera como PJ — perfil crescente. 'evasao_ou_zona_cinzenta' aparece em ~15 notas (MEI informal, laranja, não declarar). ATENÇÃO ÉTICA: usar este valor apenas para OBSERVAR e CONTAR comportamento descrito; nunca para recomendar ou facilitar evasão."
+    },
+    {
+      "name": "relacao_com_imovel_e_heranca",
+      "tipo": "categorical",
+      "descricao": "Papel que imóveis físicos e herança/sucessão desempenham na estratégia ou situação financeira do investidor",
+      "valores": [
+        "sem_exposicao_ou_irrelevante",
+        "imovel_como_moradia_apenas",
+        "imovel_como_investimento_ativo",
+        "planejamento_sucessorio_relevante",
+        "transicao_imovel_para_financeiro"
+      ],
+      "permite_desconhecido": true,
+      "justificativa": "Aparece em ~60 notas. Específico ao Brasil onde imóvel é reserva de valor cultural dominante. 'transicao_imovel_para_financeiro' = vendeu imóvel e está alocando (R$800k, R$200k, R$7M em casos reais). 'planejamento_sucessorio_relevante' = VGBL como instrumento, ITCMD, pais idosos com imóvel. Diferencia quem tem patrimônio imobilizado de quem tem capital líquido — impacto direto em produto recomendável. Campo com alta taxa esperada de desconhecido — sujeito à regra de 70%."
+    },
+    {
+      "name": "relacao_com_instituicoes_financeiras",
+      "tipo": "categorical",
+      "descricao": "Postura do investidor em relação a bancos tradicionais, corretoras e assessores — captura confiança, dependência e preferência de canal",
+      "valores": [
+        "dependente_de_bancao",
+        "migrando_para_corretora",
+        "multiplaforma_ativo",
+        "desconfiado_de_todos",
+        "diy_sem_intermediario"
+      ],
+      "permite_desconhecido": true,
+      "justificativa": "Presente em ~100 notas. Distinção crítica no Brasil: quem ainda usa Itaú/BB para investir vs quem migrou para XP/BTG vs quem usa múltiplas plataformas. 'desconfiado_de_todos' = questiona assessor, gestor de fundo e banco simultaneamente. 'diy_sem_intermediario' = usa Tesouro Direto direto, constrói planilhas próprias, rejeita assessoria. Preditor forte de produto e canal de comunicação."
+    },
+    {
+      "name": "estado_emocional_predominante",
+      "tipo": "categorical",
+      "descricao": "Tom emocional dominante expresso pelo investidor em relação à sua situação financeira e ao mercado, capturando padrão de pessoa, não reação pontual",
+      "valores": [
+        "ansioso_ou_inseguro",
+        "confiante_ou_assertivo",
+        "frustrado_ou_resignado",
+        "euforico_ou_impulsivo",
+        "cinico_ou_ironico",
+        "curioso_ou_exploratorio",
+        "equilibrado_ou_neutro"
+      ],
+      "permite_desconhecido": true,
+      "justificativa": "Dimensão emocional presente em ~200 notas. 'ansioso_ou_inseguro' = HELP!, medo de perder, checagem frequente de extrato. 'euforico_ou_impulsivo' = 'já garanti', all-in, FOMO explícito. 'cinico_ou_ironico' = tom dominante no r/farialimabets, humor como mecanismo de defesa. 'frustrado_ou_resignado' = perdas acumuladas, mercado não funciona, Brasil não tem jeito. CALIBRAÇÃO CRÍTICA: humor cínico frequentemente MASCARA ansiedade real — codifique a situação descrita, não o tom superficial."
+    },
+    {
+      "name": "fonte_primaria_de_informacao",
+      "tipo": "categorical",
+      "descricao": "Canal ou tipo de fonte que o investidor usa predominantemente para tomar decisões ou aprender sobre investimentos",
+      "valores": [
+        "comunidade_online_forum",
+        "influenciadores_youtube_instagram",
+        "assessor_ou_profissional",
+        "analise_propria_e_fontes_primarias",
+        "familia_ou_rede_proxima",
+        "sem_fonte_estruturada"
+      ],
+      "permite_desconhecido": true,
+      "justificativa": "Presente em ~160 notas. Diferencia quem cita Peter Lynch e lê balanços de quem investe porque 'um cara no YouTube disse'. 'comunidade_online_forum' é o mais comum no corpus (Reddit/fórum). 'assessor_ou_profissional' aparece com desconfiança frequente. 'sem_fonte_estruturada' = decisões por impulso, história de Uber, boato. Preditor de vulnerabilidade a fraudes e de abertura a educação."
+    },
+    {
+      "name": "vinculo_empregaticio_e_renda",
+      "tipo": "categorical",
+      "descricao": "Tipo de vínculo de trabalho e estrutura de renda do investidor, com distinções relevantes ao contexto brasileiro",
+      "valores": [
+        "clt_empregado",
+        "servidor_publico",
+        "pj_autonomo_mei",
+        "empresario_socio",
+        "renda_exterior_ou_remoto_internacional",
+        "sem_renda_ou_dependente",
+        "aposentado_ou_rentista"
+      ],
+      "permite_desconhecido": true,
+      "justificativa": "Presente em ~80 notas. Específico ao Brasil: CLT vs PJ tem implicações diretas em PGBL, FGTS, previdência privada, tributação. Servidor público aparece em ~10 notas com perfil distinto (estabilidade, foco em aposentadoria). Renda exterior em ~20 notas (carnê-leão, W-8BEN, câmbio). MEI/PJ em ~15 notas com dúvidas sobre conta PJ e tributação. Preditor de produto relevante."
+    },
+    {
+      "name": "objetivo_financeiro_primario",
+      "tipo": "categorical",
+      "descricao": "Meta financeira central que motiva as decisões de investimento do investidor neste momento de vida",
+      "valores": [
+        "reserva_de_emergencia",
+        "compra_de_imovel",
+        "aposentadoria_independencia_financeira",
+        "renda_passiva_imediata",
+        "acumulacao_sem_objetivo_claro",
+        "educacao_ou_projeto_especifico",
+        "sucessao_ou_doacao_familiar"
+      ],
+      "permite_desconhecido": true,
+      "justificativa": "Presente em ~140 notas. Diferencia quem quer 'viver de dividendos em 20 anos' de quem precisa de liquidez para pagar aluguel no mês que vem. 'sucessao_ou_doacao_familiar' aparece em ~15 notas (VGBL para filhos, pais idosos, herança). 'educacao_ou_projeto_especifico' = curso, viagem, carro em prazo definido. Preditor forte de horizonte temporal e produto adequado."
+    },
+    {
+      "name": "ceticismo_institucional",
+      "tipo": "ordinal",
+      "descricao": "Grau de desconfiança do investidor em relação a instituições financeiras, reguladores, governo e profissionais do mercado",
+      "valores": {
+        "escala": "1-5",
+        "ancoras": {
+          "1": "Confia plenamente em bancos, assessores e reguladores; segue recomendações sem questionar; não percebe conflitos de interesse",
+          "2": "Confiança moderada; questiona pontualmente mas não de forma sistemática; usa assessor com alguma reserva",
+          "3": "Desconfiança seletiva: questiona assessor, compara com comunidade online, mas ainda usa instituições tradicionais",
+          "4": "Desconfiança generalizada: vê conflito de interesse em toda recomendação profissional; prefere DIY; critica CVM, BC e regulação",
+          "5": "Ceticismo radical: vê sistema financeiro como fraudulento por design; considera evasão fiscal legítima; desconfia até de dados oficiais (IPCA, reservas)"
+        }
+      },
+      "permite_desconhecido": false,
+      "justificativa": "Presente em ~120 notas, especialmente no r/farialimabets. Diferencia quem segue assessor cegamente de quem acusa o BC de manipular câmbio para benefício próprio. Dimensão crítica para segmentação de mensagem e canal. CALIBRAÇÃO CRÍTICA: correlacionada mas distinta de sofisticacao_tecnica — há investidores sofisticados e céticos, e iniciantes ingênuos e muito céticos. Cético ≠ sofisticado."
+    },
+    {
+      "name": "exposicao_a_cripto_e_especulacao",
+      "tipo": "ordinal",
+      "descricao": "Grau de envolvimento com ativos especulativos de alta volatilidade, incluindo criptomoedas, NFTs, apostas e day trade agressivo",
+      "valores": {
+        "escala": "1-5",
+        "ancoras": {
+          "1": "Nenhuma exposição; rejeita explicitamente ou desconhece completamente; foco exclusivo em renda fixa ou ações tradicionais",
+          "2": "Curiosidade ou exposição mínima (leu sobre Bitcoin, tem pequena posição); não é parte relevante do portfólio",
+          "3": "Exposição moderada e consciente (5–20% do portfólio em cripto ou day trade); reconhece risco mas mantém posição",
+          "4": "Exposição significativa; cripto ou especulação é estratégia central; já teve perdas relevantes mas continua",
+          "5": "Exposição total ou quase total; all-in em shitcoins, NFTs, apostas; trata perdas catastróficas com humor; mentalidade de cassino"
+        }
+      },
+      "permite_desconhecido": true,
+      "justificativa": "Presente em ~100 notas, concentradas no r/farialimabets mas também no r/investimentos. Dimensão distinta de tolerancia_risco pois captura especificamente o universo cripto/apostas/day trade que tem perfil comportamental próprio (FOMO, diamond hands, linguagem de comunidade). Preditor de vulnerabilidade a fraudes e de perfil de comunicação."
+    },
+    {
+      "name": "identidade_comunitaria",
+      "tipo": "ordinal",
+      "descricao": "Grau em que o investidor ancora sua identidade e postura em uma comunidade de investimento específica, adotando seus valores, jargão e dogmas como orientação — campo adicionado em v1.1 a pedido do supervisor",
+      "valores": {
+        "escala": "1-5",
+        "ancoras": {
+          "1": "Sem identidade de grupo identificável; postura eclética e independente; não usa jargão de tribo nem cita comunidade como referência",
+          "2": "Leve afinidade com alguma comunidade (menciona um sub ou filosofia de passagem) mas não é definidor de identidade",
+          "3": "Participa ativamente de uma comunidade, adota algumas convenções e terminologia, mas mantém pensamento crítico próprio",
+          "4": "Identidade marcadamente ligada a uma comunidade específica (bastteriano, farialimer, boglehead, holder); reproduz dogmas com frequência",
+          "5": "Identidade fortemente ancorada em comunidade; adota dogma/jargão como doutrina; ataca fortemente quem diverge; pertencimento é central na postagem"
+        }
+      },
+      "permite_desconhecido": true,
+      "justificativa": "Campo adicionado em v1.1 por aprovação do supervisor. Captura tribalism como traço de pessoa (postura comportamental ecletica → dogma-de-comunidade), SEM dividir clusters por nome de tribo. Expressamente framing comportamental, não de filiação. Complementa fonte_primaria_de_informacao (qual a fonte) com o grau em que a identidade é absorvida."
+    }
+  ],
+  "dimensoes_descartadas": [
+    {
+      "nome": "horizonte_temporal_declarado",
+      "motivo": "Alta sobreposição com fase_acumulacao e objetivo_financeiro_primario. Quando aparece explicitamente (18 anos, 50 anos, 5 anos), é capturado por objetivo_financeiro_primario. Quando implícito, é inferível da combinação dos outros campos. Adicionar criaria redundância sem ganho de clustering."
+    },
+    {
+      "nome": "capital_absoluto",
+      "motivo": "Valor em BRL raramente aparece de forma explícita e confiável nas postagens — a maioria usa referências relativas ('uma bolada', 'pouco dinheiro', 'R$50'). Quando aparece, é capturado indiretamente por fase_acumulacao. Campo contínuo com alta taxa de desconhecido seria ruidoso demais para extração automatizada."
+    },
+    {
+      "nome": "uso_de_previdencia_privada",
+      "motivo": "Aparece em ~25 notas, abaixo do limiar de 30+ para campo próprio. Capturado parcialmente por perfil_tributario_e_fiscal (PGBL/VGBL) e objetivo_financeiro_primario (aposentadoria). Fundir evita campo esparso."
+    },
+    {
+      "nome": "genero_e_composicao_familiar",
+      "motivo": "Raramente explícito nas postagens. Quando aparece (casal aprendendo junto, mãe solo, pai idoso), é capturado como contexto em relacao_com_imovel_e_heranca ou objetivo_financeiro_primario. Campo demográfico com baixa extratibilidade por LLM sem dados explícitos."
+    },
+    {
+      "nome": "engajamento_politico",
+      "motivo": "Presente em ~40 notas, concentradas no r/farialimabets, mas captura tópico de postagem mais do que atributo estável de pessoa. Correlacionado com ceticismo_institucional. Fundir evita campo redundante e de difícil extração confiável."
+    },
+    {
+      "nome": "orientacao_educativa_ou_mentor",
+      "motivo": "Aparece em ~20 notas (pessoa que produz YouTube, faz quiz educativo, corrige erros alheios). Interessante mas abaixo do limiar e difícil de distinguir de ceticismo_institucional alto + sofisticacao_tecnica alta. Descartado por baixa frequência."
+    },
+    {
+      "nome": "uso_de_alavancagem",
+      "motivo": "Subconjunto de exposicao_a_cripto_e_especulacao e tolerancia_risco. Aparece em ~15 notas de forma explícita. Fundir nos campos existentes preserva a informação sem criar campo esparso."
+    }
+  ]
+}

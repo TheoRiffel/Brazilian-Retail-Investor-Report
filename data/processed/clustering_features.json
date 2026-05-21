@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.1",
+  "verdict_date": "2026-05-20",
+  "decision_rule": "pre-registered: optional field demoted if full-corpus desconhecido >70%",
+  "clustering_features": [
+    "sofisticacao_tecnica",
+    "fase_acumulacao",
+    "estrategia_principal",
+    "tolerancia_risco_declarada_ou_inferida",
+    "relacao_com_instituicoes_financeiras",
+    "estado_emocional_predominante",
+    "objetivo_financeiro_primario",
+    "ceticismo_institucional",
+    "exposicao_a_cripto_e_especulacao",
+    "identidade_comunitaria"
+  ],
+  "metadata_and_flags": [
+    "subreddit_origem",
+    "window",
+    "relacao_com_imovel_e_heranca",
+    "vinculo_empregaticio_e_renda",
+    "fonte_primaria_de_informacao",
+    "confianca_extracao",
+    "relacao_com_selic_e_renda_fixa",
+    "perfil_tributario_e_fiscal"
+  ],
+  "field_verdicts": {
+    "relacao_com_selic_e_renda_fixa": {
+      "decision": "DEMOTE_TO_FLAG",
+      "full_corpus_desconhecido_rate": 0.7342
+    },
+    "perfil_tributario_e_fiscal": {
+      "decision": "DEMOTE_TO_FLAG",
+      "full_corpus_desconhecido_rate": 0.6944
+    }
+  },
+  "supervisor_overrides": {
+    "perfil_tributario_e_fiscal": {
+      "default_rule_outcome": "INCLUDE_AS_CLUSTERING_FEATURE",
+      "override": "DEMOTE_TO_FLAG",
+      "rationale": "Conservative symmetry with relacao_com_selic_e_renda_fixa; both are Brazil-specific high-missingness context fields near the 70% boundary."
+    }
+  }
+}

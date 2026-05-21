@@ -1,0 +1,463 @@
+{
+  "n_total": 3586,
+  "ari": {
+    "M1xM2": -0.0028122248587250822,
+    "M1xM3": -0.009089546341468517,
+    "M2xM3": 0.2120022661453081
+  },
+  "h1": {
+    "M1": {
+      "chi2": 286.99641648706694,
+      "p_value": 6.908479270148353e-61,
+      "cramers_v": 0.2829000957274411,
+      "farialimabets_share": {
+        "M1-C0": 0.12337662337662338,
+        "M1-C1": 0.22844827586206898,
+        "M1-C2": 0.5844155844155844,
+        "M1-C3": 0.5431743421052632,
+        "M1-noise": 0.662303664921466
+      },
+      "farialimabets_enrichment": {
+        "M1-C0": 0.24730495887566878,
+        "M1-C1": 0.45791812031379503,
+        "M1-C2": 1.1714445420426414,
+        "M1-C3": 1.0887776359918802,
+        "M1-noise": 1.3275690007872425
+      }
+    },
+    "M2": {
+      "chi2": 1650.2786406419116,
+      "p_value": 0.0,
+      "cramers_v": 0.6783807203485617,
+      "farialimabets_share": {
+        "M2-C0": 0.29411764705882354,
+        "M2-C1": 0.8182665424044734,
+        "M2-C2": 0.17708942139099942,
+        "M2-C3": 0.06451612903225806,
+        "M2-C4": 0.18181818181818182,
+        "M2-C5": 0.8966565349544073,
+        "M2-C6": 1.0
+      },
+      "farialimabets_enrichment": {
+        "M2-C0": 0.5895505211587151,
+        "M2-C1": 1.64019218617241,
+        "M2-C2": 0.3549707462873806,
+        "M2-C3": 0.1293207594799762,
+        "M2-C4": 0.36444941307993295,
+        "M2-C5": 1.7973227134413106,
+        "M2-C6": 2.004471771939631
+      }
+    },
+    "M3": {
+      "chi2": 1508.7698386842244,
+      "p_value": 0.0,
+      "cramers_v": 0.6486439238569649,
+      "farialimabets_share": {
+        "M3-C0": 0.09827456864216054,
+        "M3-C1": 0.6682808716707022,
+        "M3-C2": 0.6498316498316499,
+        "M3-C3": 0.9355828220858896
+      },
+      "farialimabets_enrichment": {
+        "M3-C0": 0.19698859874275443,
+        "M3-C1": 1.3395501429911336,
+        "M3-C2": 1.302569198600501,
+        "M3-C3": 1.8753493571827837
+      }
+    }
+  },
+  "h2": {
+    "M1": {
+      "chi2": 94.99423338379432,
+      "p_value": 4.4856153344241307e-17,
+      "cramers_v": 0.11508758600182799,
+      "prevalence_range": {
+        "M1-C0": 0.0293897105500356,
+        "M1-C1": 0.08734871054999462,
+        "M1-C2": 0.045306126743521316,
+        "M1-C3": 0.029272637100886345,
+        "M1-noise": 0.01692579096332511
+      },
+      "composition_drift_mean_ordinal": {
+        "M1-C3": 0.41107344126526674,
+        "M1-C1": 0.18365357839042043,
+        "M1-noise": 0.44223978919631096,
+        "M1-C0": 0.25590090090090106,
+        "M1-C2": 0.41500000000000004
+      }
+    },
+    "M2": {
+      "chi2": 163.5278699723368,
+      "p_value": 1.0024157942127258e-28,
+      "cramers_v": 0.15099958354006054,
+      "prevalence_range": {
+        "M2-C0": 0.00754681247303833,
+        "M2-C1": 0.1385095062901795,
+        "M2-C2": 0.04318597494846821,
+        "M2-C3": 0.01837777551757638,
+        "M2-C4": 0.009227467058538826,
+        "M2-C5": 0.17031778821367322,
+        "M2-C6": 0.0008347245409015025
+      },
+      "composition_drift_mean_ordinal": {
+        "M2-C2": 0.22607957098425038,
+        "M2-C3": 0.30991304347826076,
+        "M2-C0": 0.5363636363636364,
+        "M2-C5": 0.2749791574767913,
+        "M2-C4": 0.41500000000000004,
+        "M2-C1": 0.23239428246926552,
+        "M2-C6": NaN
+      }
+    },
+    "M3": {
+      "chi2": 39.168357311218514,
+      "p_value": 6.633765928621762e-07,
+      "cramers_v": 0.07390052752625292,
+      "prevalence_range": {
+        "M3-C0": 0.021996513834186215,
+        "M3-C1": 0.04208827823220013,
+        "M3-C2": 0.10189915371045183,
+        "M3-C3": 0.04577118266596991
+      },
+      "composition_drift_mean_ordinal": {
+        "M3-C2": 0.5230727107334336,
+        "M3-C0": 0.18981883443105954,
+        "M3-C1": 0.36629977796467716,
+        "M3-C3": 0.6730695758029779
+      }
+    }
+  },
+  "h4": {
+    "grouped_importance": {
+      "sofisticacao_tecnica": 0.013961253049176996,
+      "fase_acumulacao": 0.032267813958260005,
+      "estrategia_principal": 0.11651992420462988,
+      "tolerancia_risco_declarada_ou_inferida": 0.07577647608350876,
+      "relacao_com_instituicoes_financeiras": 0.014139587400532611,
+      "estado_emocional_predominante": 0.45115323258140916,
+      "objetivo_financeiro_primario": 0.028164014225459194,
+      "ceticismo_institucional": 0.04038755326842799,
+      "exposicao_a_cripto_e_especulacao": 0.10891702024834422,
+      "identidade_comunitaria": 0.11871312498025118
+    },
+    "grouped_importance_share": {
+      "sofisticacao_tecnica": 0.013961253049176996,
+      "fase_acumulacao": 0.032267813958260005,
+      "estrategia_principal": 0.11651992420462988,
+      "tolerancia_risco_declarada_ou_inferida": 0.07577647608350876,
+      "relacao_com_instituicoes_financeiras": 0.014139587400532611,
+      "estado_emocional_predominante": 0.45115323258140916,
+      "objetivo_financeiro_primario": 0.028164014225459194,
+      "ceticismo_institucional": 0.04038755326842799,
+      "exposicao_a_cripto_e_especulacao": 0.10891702024834422,
+      "identidade_comunitaria": 0.11871312498025118
+    },
+    "per_feature_univariate": {
+      "sofisticacao_tecnica": {
+        "chi2": 821.982847847161,
+        "p_value": 4.692988525307512e-158,
+        "cramers_v": 0.23938461723724935
+      },
+      "fase_acumulacao": {
+        "chi2": 1252.2138146944585,
+        "p_value": 1.2277673960553334e-239,
+        "cramers_v": 0.24124508696023841
+      },
+      "estrategia_principal": {
+        "chi2": 3971.40178781255,
+        "p_value": 0.0,
+        "cramers_v": 0.4296265833334069
+      },
+      "tolerancia_risco_declarada_ou_inferida": {
+        "chi2": 2881.6633274390365,
+        "p_value": 0.0,
+        "cramers_v": 0.44821509800817294
+      },
+      "relacao_com_instituicoes_financeiras": {
+        "chi2": 654.4271743550669,
+        "p_value": 1.5104421989690306e-118,
+        "cramers_v": 0.19104712984009362
+      },
+      "estado_emocional_predominante": {
+        "chi2": 10639.202404891052,
+        "p_value": 0.0,
+        "cramers_v": 0.7031917515013812
+      },
+      "objetivo_financeiro_primario": {
+        "chi2": 1103.1135524003,
+        "p_value": 8.387363373137502e-204,
+        "cramers_v": 0.22642758903630542
+      },
+      "ceticismo_institucional": {
+        "chi2": 1050.4286330800255,
+        "p_value": 1.7141203154692647e-206,
+        "cramers_v": 0.2706126769650496
+      },
+      "exposicao_a_cripto_e_especulacao": {
+        "chi2": 2915.1242419026103,
+        "p_value": 0.0,
+        "cramers_v": 0.4032165874460873
+      },
+      "identidade_comunitaria": {
+        "chi2": 2826.3893403119428,
+        "p_value": 0.0,
+        "cramers_v": 0.4438956150809743
+      }
+    },
+    "top_feature": "estado_emocional_predominante",
+    "top_feature_share": 0.45115323258140916,
+    "h4_null_supported": false
+  },
+  "personas": [
+    {
+      "label": "Earnest learner (mainstream)",
+      "status": "crisp",
+      "n": 1089,
+      "pct_corpus": 0.30368098159509205,
+      "above_3pct_floor": true,
+      "investimentos_share": 0.9348025711662076,
+      "farialimabets_share": 0.06519742883379247,
+      "farialimabets_overrep": 0.13068640570037998,
+      "winA_share": 0.32598714416896235,
+      "winB_share": 0.3526170798898072,
+      "winC_share": 0.3213957759412305,
+      "winA_overrep": 0.9798741818859169,
+      "winC_overrep": 0.9644562782638095,
+      "ordinal_means": {
+        "sofisticacao_tecnica": 2.1836547291092745,
+        "exposicao_a_cripto_e_especulacao": 1.1019283746556474,
+        "identidade_comunitaria": 1.263544536271809,
+        "tolerancia_risco_declarada_ou_inferida": 2.1221303948576677,
+        "ceticismo_institucional": 2.133149678604224
+      },
+      "categorical_modes": {
+        "fase_acumulacao": [
+          "acumulacao_inicial",
+          0.32598714416896235
+        ],
+        "estrategia_principal": [
+          "renda_fixa_conservadora",
+          0.24885215794306703
+        ],
+        "relacao_com_instituicoes_financeiras": [
+          "desconhecido",
+          0.46097337006427913
+        ],
+        "estado_emocional_predominante": [
+          "curioso_ou_exploratorio",
+          0.7869605142332415
+        ],
+        "objetivo_financeiro_primario": [
+          "acumulacao_sem_objetivo_claro",
+          0.42699724517906334
+        ]
+      },
+      "example_threads": [
+        "n0gwny",
+        "isrrdx",
+        "i1rnpd"
+      ],
+      "note": null
+    },
+    {
+      "label": "Speculator / crypto-adjacent",
+      "status": "crisp",
+      "n": 394,
+      "pct_corpus": 0.10987172336865589,
+      "above_3pct_floor": true,
+      "investimentos_share": 0.13451776649746192,
+      "farialimabets_share": 0.8654822335025381,
+      "farialimabets_overrep": 1.734834706171102,
+      "winA_share": 0.5126903553299492,
+      "winB_share": 0.3299492385786802,
+      "winC_share": 0.15736040609137056,
+      "winA_overrep": 1.5410793078065363,
+      "winC_overrep": 0.47221290062230525,
+      "ordinal_means": {
+        "sofisticacao_tecnica": 1.5913705583756346,
+        "exposicao_a_cripto_e_especulacao": 3.9923664122137406,
+        "identidade_comunitaria": 3.8527918781725887,
+        "tolerancia_risco_declarada_ou_inferida": 4.444162436548224,
+        "ceticismo_institucional": 2.8680203045685277
+      },
+      "categorical_modes": {
+        "fase_acumulacao": [
+          "desconhecido",
+          0.4593908629441624
+        ],
+        "estrategia_principal": [
+          "especulacao_curto_prazo",
+          0.8781725888324873
+        ],
+        "relacao_com_instituicoes_financeiras": [
+          "desconhecido",
+          0.8324873096446701
+        ],
+        "estado_emocional_predominante": [
+          "euforico_ou_impulsivo",
+          0.6269035532994924
+        ],
+        "objetivo_financeiro_primario": [
+          "acumulacao_sem_objetivo_claro",
+          0.5253807106598984
+        ]
+      },
+      "example_threads": [
+        "o0f467",
+        "l79h3l",
+        "nceg2t"
+      ],
+      "note": null
+    },
+    {
+      "label": "Cynical-reactive continuum (fuzzy)",
+      "status": "fuzzy",
+      "n": 1511,
+      "pct_corpus": 0.42136084774121585,
+      "above_3pct_floor": true,
+      "investimentos_share": 0.21178027796161483,
+      "farialimabets_share": 0.7882197220383852,
+      "farialimabets_overrep": 1.5799641829120454,
+      "winA_share": 0.2945069490403706,
+      "winB_share": 0.3256121773659828,
+      "winC_share": 0.3798808735936466,
+      "winA_overrep": 0.8852488845421366,
+      "winC_overrep": 1.1399605127253696,
+      "ordinal_means": {
+        "sofisticacao_tecnica": 1.57114493712773,
+        "exposicao_a_cripto_e_especulacao": 1.5965494359654944,
+        "identidade_comunitaria": 3.0066181336863003,
+        "tolerancia_risco_declarada_ou_inferida": 2.42753143613501,
+        "ceticismo_institucional": 3.086035737921906
+      },
+      "categorical_modes": {
+        "fase_acumulacao": [
+          "desconhecido",
+          0.6724023825281271
+        ],
+        "estrategia_principal": [
+          "desconhecido",
+          0.5876902713434812
+        ],
+        "relacao_com_instituicoes_financeiras": [
+          "desconhecido",
+          0.8014559894109861
+        ],
+        "estado_emocional_predominante": [
+          "cinico_ou_ironico",
+          0.4639311714096625
+        ],
+        "objetivo_financeiro_primario": [
+          "desconhecido",
+          0.7293183322303111
+        ]
+      },
+      "example_threads": [
+        "k6olwt",
+        "jigrgj",
+        "lpxrs0"
+      ],
+      "note": "Continuum-end posture per supervisor verdict 2026-05-21. M3 subdivides into C1 (guru-skeptic core) and C3 (loss-as-meme)."
+    },
+    {
+      "label": "Earnest sub-theme: tax/IR",
+      "status": "sub_theme",
+      "n": 109,
+      "pct_corpus": 0.030395984383714447,
+      "above_3pct_floor": true,
+      "investimentos_share": 0.9174311926605505,
+      "farialimabets_share": 0.08256880733944955,
+      "farialimabets_overrep": 0.16550684355464845,
+      "winA_share": 0.47706422018348627,
+      "winB_share": 0.28440366972477066,
+      "winC_share": 0.23853211009174313,
+      "winA_overrep": 1.4339918638541338,
+      "winC_overrep": 0.7157959387355571,
+      "ordinal_means": {
+        "sofisticacao_tecnica": 2.4220183486238533,
+        "exposicao_a_cripto_e_especulacao": 1.348623853211009,
+        "identidade_comunitaria": 1.3394495412844036,
+        "tolerancia_risco_declarada_ou_inferida": 2.385321100917431,
+        "ceticismo_institucional": 2.293577981651376
+      },
+      "categorical_modes": {
+        "fase_acumulacao": [
+          "acumulacao_ativa",
+          0.4036697247706422
+        ],
+        "estrategia_principal": [
+          "dividendos_buy_hold",
+          0.3577981651376147
+        ],
+        "relacao_com_instituicoes_financeiras": [
+          "desconhecido",
+          0.44954128440366975
+        ],
+        "estado_emocional_predominante": [
+          "curioso_ou_exploratorio",
+          0.6605504587155964
+        ],
+        "objetivo_financeiro_primario": [
+          "acumulacao_sem_objetivo_claro",
+          0.47706422018348627
+        ]
+      },
+      "example_threads": [
+        "l0g9m6",
+        "mq8iqc",
+        "lzutc1"
+      ],
+      "note": "Single-method evidence (M1 only); collapsed into earnest persona by M2 and M3. Demoted from persona to sub-theme by supervisor 2026-05-21. Use as pain/need texture for the earnest persona in Phase 4; do NOT list as a separate persona row."
+    },
+    {
+      "label": "Earnest sub-theme: property/banking-debt",
+      "status": "sub_theme",
+      "n": 295,
+      "pct_corpus": 0.0822643614054657,
+      "above_3pct_floor": true,
+      "investimentos_share": 0.911864406779661,
+      "farialimabets_share": 0.08813559322033898,
+      "farialimabets_overrep": 0.17666530871332342,
+      "winA_share": 0.19661016949152543,
+      "winB_share": 0.3728813559322034,
+      "winC_share": 0.43050847457627117,
+      "winA_overrep": 0.5909841305922968,
+      "winC_overrep": 1.291885681866534,
+      "ordinal_means": {
+        "sofisticacao_tecnica": 2.183050847457627,
+        "exposicao_a_cripto_e_especulacao": 1.0440677966101695,
+        "identidade_comunitaria": 1.2915254237288136,
+        "tolerancia_risco_declarada_ou_inferida": 2.1220338983050846,
+        "ceticismo_institucional": 2.352542372881356
+      },
+      "categorical_modes": {
+        "fase_acumulacao": [
+          "consolidacao",
+          0.2847457627118644
+        ],
+        "estrategia_principal": [
+          "imobiliario_direto_ou_fii",
+          0.2576271186440678
+        ],
+        "relacao_com_instituicoes_financeiras": [
+          "migrando_para_corretora",
+          0.28135593220338984
+        ],
+        "estado_emocional_predominante": [
+          "curioso_ou_exploratorio",
+          0.4847457627118644
+        ],
+        "objetivo_financeiro_primario": [
+          "acumulacao_sem_objetivo_claro",
+          0.34576271186440677
+        ]
+      },
+      "example_threads": [
+        "n0gwny",
+        "lz3uw9",
+        "k83yam"
+      ],
+      "note": "Single-method evidence (M1 only); collapsed into earnest persona by M2 and M3. Demoted from persona to sub-theme by supervisor 2026-05-21. Use as pain/need texture for the earnest persona in Phase 4; do NOT list as a separate persona row."
+    }
+  ]
+}

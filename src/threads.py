@@ -81,7 +81,7 @@ def _stream_zst(path: Path):
 def _utc_to_ym(ts) -> Optional[str]:
     try:
         import datetime
-        return datetime.datetime.fromtimestamp(int(ts), datetime.UTC).strftime("%Y-%m")
+        return datetime.datetime.fromtimestamp(int(ts), datetime.timezone.utc).strftime("%Y-%m")
     except Exception:
         return None
 
@@ -198,19 +198,27 @@ def stratified_sample(threads: list[AuthorThread], n: int = 50, seed: int = 42) 
     """
     Sample n threads with stratification:
       20 uniform
-      15 from top quartile by num_comments
+      15 from top quartile by num_comments (>= 75th percentile)
       15 from bottom-half-but-above-10th-percentile by num_comments
+
+    Reproducibility note: an earlier version (used for the Phase 2 extraction
+    sample) thresholded `top_q` at the 25th percentile by mistake, so the
+    "high-engagement" stratum drew from the top ~75% rather than the top 25%.
+    Supervisor decided to ride the existing extraction rather than re-extract;
+    the bug is disclosed as a known sampling deviation in
+    `reports/phase2_full_summary.md`. The fix below ensures future runs are
+    correct without retroactively changing the analysis sample.
     """
     rng = random.Random(seed)
     if len(threads) <= n:
         return threads
 
     scores = sorted(t.num_comments for t in threads)
-    q25 = scores[len(scores) // 4]
+    q75 = scores[len(scores) * 3 // 4]
     p10 = scores[len(scores) // 10]
     median = scores[len(scores) // 2]
 
-    top_q   = [t for t in threads if t.num_comments >= q25]
+    top_q   = [t for t in threads if t.num_comments >= q75]
     mid_q   = [t for t in threads if p10 < t.num_comments < median]
     rest    = threads[:]
 
