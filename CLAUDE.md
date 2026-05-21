@@ -314,6 +314,23 @@ let updates here contradict the LOCKED zone above.
       quartile bug fixed + disclosure block added to `reports/phase2_full_summary.md`;
       every appendix link in `reports/memo.md` verified to resolve; all phases marked
       complete. Study END-TO-END CLOSED.)
+- [x] Phase 6 (SUPPLEMENTARY — COMPLETE 2026-05-21, SUPERVISOR-CONFIRMED null result)
+      — r/investimentos-only sub-segmentation of the earnest mainstream. Verdict:
+      **the earnest mainstream is one coherent persona; it does NOT resolve into
+      sub-segments.** Re-clustering n=1,800 (78.3% originally M2-C2 earnest) on the
+      locked 10 Method-2 features produced ONE genuine earnest core at every
+      candidate k (P6-C7 at k=9: n=1,410, 96.5% originally-earnest). At no stable k
+      did ≥2 earnest-dominated sub-segments clear the recomputed 54-thread floor
+      with bootstrap ARI ≥ 0.5; the other above-floor groups at k=9 were the
+      residual speculator and cynic/tax-edge tails re-surfacing, NOT mainstream
+      sub-splits. Tax/IR and property/debt confirmed as **situational moments**,
+      not sub-types. **Strengthens the Phase 4D recommendation: one product, one
+      voice, sequenced by life-moment, not fragmented across sub-audiences.** No
+      memo edits required. Evidential tier remains EXPLORATORY (single-subreddit,
+      single-method) — does NOT supersede the triangulated three-persona headline,
+      corroborates it. No finalize / naming run. See
+      `reports/phase6_investimentos_explore.md` and `reports/decisions_log.md`
+      2026-05-21 entry "Phase 6 closure: Sossego-Seeker is internally coherent."
 
 ### Environment
 

@@ -411,3 +411,134 @@ memo's persona table.
 **Phase 4 stays BLOCKED until the supervisor issues the Phase 4 brief. Do not
 begin persona naming, memo drafting, or any synthesis writing before the brief
 lands.**
+
+---
+
+## 2026-05-21 — Phase 6 (supplementary): r/investimentos-only sub-segmentation
+
+**Decision:** Run a SCOPED supplementary analysis re-clustering only the
+r/investimentos subset (n≈1,800) using Method 2 attribute clustering on the locked
+10 features. Goal: refine the "for whom" of the Phase 4 build recommendation by
+asking whether the earnest mainstream resolves into actionable life-stage / goal
+sub-segments, or is one coherent persona. Output:
+`reports/phase6_investimentos_explore.md`, then HARD STOP for supervisor k
+selection. No new extraction, no LLM calls (~$0).
+
+**Why this is supplementary, not a re-run of the main study:**
+
+- Single-subreddit (investimentos only). The speculator and cynic are real
+  populations; this scopes to the *target customer*, it does not define anyone
+  away. Framed everywhere as "profiling the earnest-mainstream target customer
+  on its own data to sharpen the build recommendation" — NOT "removing distortion
+  to find the real investor."
+- Single-method (Method 2 attribute clustering only). NOT triangulated against
+  Methods 1 and 3 the way the three confirmed personas are.
+- Evidential tier is therefore **EXPLORATORY** — the same tier as the demoted
+  Method-1 topical spikes (tax/IR, property/debt) we called "situational
+  variants," NOT the triangulated tier of the three personas. Any sub-segments
+  must be labelled accordingly. They cannot supersede or correct the headline
+  three-persona result.
+
+**Pre-registered rules carried over from Phase 3A (locked):**
+
+- **3% floor recomputed on the new n.** At n≈1,800 the floor is ~54 threads.
+  Any sub-segment below this is "edge," not promotable. Same enforcement as the
+  main study, just recomputed for the smaller sample.
+- **Firewall holds.** `subreddit_origem` and `window` are NOT clustering features.
+  (We are subsetting ON subreddit, so feeding it as a clustering feature would be
+  doubly circular.) Asserted at runtime in the Phase 6 script.
+- **Bootstrap stability ≥ 0.5** (mean ARI) required for any sub-cluster to be
+  "real." Same threshold as Phase 3A.
+- **Method, code, and hyperparameters identical to Phase 3A** (Gower distance,
+  average-linkage hierarchical, B=10 gap-statistic references, B=20 bootstrap
+  iterations at 80% subsample, silhouette sweep k=2..10). Functions imported
+  from `notebooks/03a_attribute_clustering.py`, not re-implemented.
+
+**Cross-tab is the central interpretive step.** Before re-clustering, the Phase 6
+script reports the M2 composition of the r/investimentos subset (% originally
+earnest / speculator / cynic / edge). After re-clustering, each candidate
+sub-cluster is cross-tabbed against the original Phase 3A M2 labels. A genuine
+mainstream sub-segment must be overwhelmingly originally-earnest (M2-C2). A
+sub-cluster that is mostly originally-speculator or originally-cynic is the
+residual tail re-surfacing — NOT a new mainstream finding, and must be labelled
+as such in the report.
+
+**Situational-variant alignment.** Per-candidate sub-cluster, also report the
+distribution of the demoted-flag fields `perfil_tributario_e_fiscal` and
+`relacao_com_imovel_e_heranca`. Descriptive only — those fields were not
+clustered on. The question is whether any sub-cluster maps onto the already-known
+tax/IR or property/debt situational variants.
+
+**Hard stops and prohibitions for Phase 6:**
+
+- HARD STOP after explore mode. Supervisor selects k (or decides the mainstream
+  is one coherent persona and there is nothing to sub-segment) before any naming,
+  narration, or finalization.
+- Do NOT name sub-personas in explore mode.
+- Do NOT present this as superseding the three-persona result.
+- Do NOT re-extract or make any new LLM calls.
+- Do NOT promote a sub-cluster that is below the recomputed 54-thread floor,
+  unstable under bootstrap (<0.5), or revealed by the cross-tab to be a
+  re-surfaced speculator/cynic tail rather than a genuine mainstream split.
+- Do NOT touch any Phase 0–5 artifact. New files only, all prefixed `phase6_`.
+
+**Affected files (intent):**
+
+- `CLAUDE.md` — Phase 6 in-progress entry added (Living Zone).
+- `notebooks/06_phase6_investimentos_subseg.py` — NEW, explore-mode script.
+- `reports/phase6_investimentos_explore.md` — NEW, supervisor brief.
+- `reports/figures/phase6_*.png` — NEW, candidate figures.
+- `data/interim/phase6_*` — NEW, cached intermediate artefacts.
+
+**Not affected:** all Phase 0–5 outputs remain unchanged.
+
+---
+
+## 2026-05-21 — Phase 6 closure: Sossego-Seeker is internally coherent (null result)
+
+**Decision:** Supervisor selected **Option 2** from the Phase 6 explore HARD STOP.
+Verdict: **the earnest mainstream is one coherent persona; it does not resolve
+into sub-segments.** No finalize / naming run. Phase 6 is now CLOSED.
+
+**Evidence (from `reports/phase6_investimentos_explore.md`):**
+
+- Re-clustering r/investimentos (n=1,800; 78.3% originally M2-C2 earnest, 10.8%
+  M2-C1 cynic, 3.8% M2-C5 speculator, 7.1% edge — Scenario A mainstream-dominant)
+  on the locked 10 Method-2 clustering features produced ONE genuine earnest core
+  at every candidate k (P6-C7 at k=9: n=1,410, **96.5% originally-earnest**).
+- At no stable k did ≥2 earnest-dominated sub-segments clear the recomputed
+  54-thread (3%) floor with bootstrap ARI ≥ 0.5. k=2 (ARI 0.45) and k=4
+  (ARI 0.17) failed stability; k=9 cleared stability (ARI 0.68) but produced
+  only ONE genuine earnest sub-cluster — the other two above-floor groups
+  (P6-C5 n=113 at 37% earnest; P6-C6 n=257 at 1% earnest) are the residual
+  speculator and cynic/tax-edge tails re-surfacing, NOT mainstream sub-splits.
+- The Sossego-Seeker is internally coherent. The tax/IR and property/debt
+  variants identified at Phase 3D are **situational moments**, not sub-types —
+  confirmed by their non-concentration in the attribute clustering (within the
+  earnest core, perfil_tributario and relacao_com_imovel_e_heranca are spread
+  across levels, not concentrated into a discrete sub-cluster).
+
+**Effect on study and Phase 4 recommendation:** This strengthens the Phase 4D
+memo recommendation. **One product, one voice, sequenced by life-moment, not
+fragmented across sub-audiences.** No memo edits are required — the
+recommendation was already written this way; Phase 6 is the cited supplementary
+evidence for that choice. The IR-wedge framing in `reports/memo.md` (one product
+that meets the Sossego-Seeker at the IR moment, then expands into pre-decision
+validation) is now supported by both the triangulated three-persona result AND
+the Phase 6 internal-coherence check.
+
+**Evidential status (kept explicit):** Phase 6 is single-subreddit, single-method
+EXPLORATORY evidence — the same tier as the demoted Method-1 topical spikes
+(tax/IR, property/debt situational variants). It does NOT supersede or modify
+the triangulated three-persona headline. It is corroborating evidence on the
+internal structure of the mainstream target customer.
+
+**Affected files:**
+
+- `reports/phase6_investimentos_explore.md` — Status header flipped to CLOSED;
+  HARD STOP section replaced with supervisor-verdict block.
+- `CLAUDE.md` — Phase 6 status entry flipped from `[ ] IN-PROGRESS` to
+  `[x] COMPLETE`.
+
+**Not affected:** memo, personas, pains/needs, Phase 0–5 outputs all unchanged.
+Study remains END-TO-END CLOSED, now with Phase 6 as supplementary corroboration.
